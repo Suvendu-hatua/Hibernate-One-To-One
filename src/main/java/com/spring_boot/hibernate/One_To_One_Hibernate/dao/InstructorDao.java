@@ -5,4 +5,6 @@ import com.spring_boot.hibernate.One_To_One_Hibernate.entity.Instructor;
 public interface InstructorDao {
     public void addInstructorWithDetails(Instructor instructor);
     public Instructor findInstructorById(int id);
+
+    public  void deleteInstructorById(int id);
 }
