@@ -20,8 +20,39 @@ public class OneToOneHibernateApplication {
 		return runner->{
 //			createInstructorWithDetails(dao);
 //			getInstructorWithDetails(dao);
-			deleteInstructorWithDetailsById(dao);
+//			deleteInstructorWithDetailsById(dao);
+//			addInstructorDetailsWithInstructor(dao);
+//			getInstructorDetailsWithInstructor(dao);
+			deleteInstructorDetailsWithOutInstructor(dao);
 		};
+	}
+
+
+	private void deleteInstructorDetailsWithOutInstructor(InstructorDao dao){
+		int id=2;
+		dao.deleteInstructorDetailsWithOutInstructor(2);
+		System.out.println("Done!!!");
+	}
+
+	private void getInstructorDetailsWithInstructor(InstructorDao dao) {
+
+		int id=2;
+		InstructorDetails details=dao.findInstructorDetailsById(id);
+		System.out.println(details);
+		System.out.println(details.getInstructor());
+	}
+
+	private void addInstructorDetailsWithInstructor(InstructorDao dao){
+		//Creating an instance of Instructor Details.
+		InstructorDetails details=new InstructorDetails("http://www.youtube.com/sonali-samanta","Cooking and Sleeping");
+		//Creating an instance of Instructor.
+		Instructor instructor=new Instructor("Sonali","Samanta","samanta.sonali310@gmail.com");
+		//Adding instructor to InstructorDetails.
+		details.setInstructor(instructor);
+
+		System.out.println("Saving Instructor Details ----> will automatically save Instructor Data into DB.");
+		dao.addInstructorDetailsWithInstructor(details);
+		System.out.println("Done!!!");
 	}
 
 	private void deleteInstructorWithDetailsById(InstructorDao dao) {
