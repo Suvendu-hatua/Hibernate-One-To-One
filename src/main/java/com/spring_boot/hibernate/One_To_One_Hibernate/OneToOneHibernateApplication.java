@@ -19,15 +19,25 @@ public class OneToOneHibernateApplication {
 	public CommandLineRunner commandLineRunner(InstructorDao dao){
 		return runner->{
 			createInstructorWithDetails(dao);
+//			getInstructorWithDetails(dao);
 		};
+	}
+
+	private void getInstructorWithDetails(InstructorDao dao) {
+		int id=1;
+		Instructor result=dao.findInstructorById(id);
+		System.out.println("################ Instructor ################");
+		System.out.println(result);
+		System.out.println("################ Instructor Details ###############");
+		System.out.println(result.getInstructorDetails());
 	}
 
 	private void createInstructorWithDetails(InstructorDao dao) {
 
 		//Creating an instance of Instructor.
-		Instructor instructor=new Instructor("Suvendu","Hatua","suvenduhatua01@gmail.com");
+		Instructor instructor=new Instructor("Test","Test","test.test010@gmail.com");
 		//Creating an instance of Instructor Details.
-		InstructorDetails details=new InstructorDetails("http://www.youtube.com/suvendu-hatua","Coding and Playing Cricket");
+		InstructorDetails details=new InstructorDetails("http://www.youtube.com/test-test","Coding and Playing Football");
 		//Adding details to instructor.
 		instructor.setInstructorDetails(details);
 
