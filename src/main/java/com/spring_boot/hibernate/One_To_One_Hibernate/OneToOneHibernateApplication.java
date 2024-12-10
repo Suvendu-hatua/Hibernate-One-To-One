@@ -1,7 +1,12 @@
 package com.spring_boot.hibernate.One_To_One_Hibernate;
 
+import com.spring_boot.hibernate.One_To_One_Hibernate.dao.InstructorDao;
+import com.spring_boot.hibernate.One_To_One_Hibernate.entity.Instructor;
+import com.spring_boot.hibernate.One_To_One_Hibernate.entity.InstructorDetails;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class OneToOneHibernateApplication {
@@ -10,4 +15,25 @@ public class OneToOneHibernateApplication {
 		SpringApplication.run(OneToOneHibernateApplication.class, args);
 	}
 
+	@Bean
+	public CommandLineRunner commandLineRunner(InstructorDao dao){
+		return runner->{
+			createInstructorWithDetails(dao);
+		};
+	}
+
+	private void createInstructorWithDetails(InstructorDao dao) {
+
+		//Creating an instance of Instructor.
+		Instructor instructor=new Instructor("Suvendu","Hatua","suvenduhatua01@gmail.com");
+		//Creating an instance of Instructor Details.
+		InstructorDetails details=new InstructorDetails("http://www.youtube.com/suvendu-hatua","Coding and Playing Cricket");
+		//Adding details to instructor.
+		instructor.setInstructorDetails(details);
+
+		System.out.println("Saving instructor into Database...");
+		dao.addInstructorWithDetails(instructor);
+		System.out.println("Done!!");
+
+	}
 }
