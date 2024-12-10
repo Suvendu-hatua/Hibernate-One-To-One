@@ -47,6 +47,8 @@ public class InstructorDaoImpl implements InstructorDao{
     @Override
     @Transactional
     public void deleteInstructorDetailsWithOutInstructor(int id) {
-
+        InstructorDetails details=findInstructorDetailsById(id);
+        details.getInstructor().setInstructorDetails(null);
+        entityManager.remove(details);
     }
 }

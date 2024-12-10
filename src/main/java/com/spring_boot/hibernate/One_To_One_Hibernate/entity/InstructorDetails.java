@@ -16,7 +16,7 @@ public class InstructorDetails {
     @Column(name = "hobbies")
     private String hobbies;
 
-    @OneToOne(mappedBy = "instructorDetails",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "instructorDetails",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     private Instructor instructor;
 
     //Adding Constructor.
