@@ -18,6 +18,9 @@ public class InstructorDetails {
 
     //Adding Constructor.
 
+    public InstructorDetails() {
+    }
+
     public InstructorDetails(String youTubeChannel, String hobbies) {
         this.youTubeChannel = youTubeChannel;
         this.hobbies = hobbies;
