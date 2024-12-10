@@ -18,9 +18,17 @@ public class OneToOneHibernateApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(InstructorDao dao){
 		return runner->{
-			createInstructorWithDetails(dao);
+//			createInstructorWithDetails(dao);
 //			getInstructorWithDetails(dao);
+			deleteInstructorWithDetailsById(dao);
 		};
+	}
+
+	private void deleteInstructorWithDetailsById(InstructorDao dao) {
+		int id=3;
+		System.out.println("Deleting Instructor -----> will automatically delete Instructor Details from DB.");
+		dao.deleteInstructorById(id);
+		System.out.println("Done!!!");
 	}
 
 	private void getInstructorWithDetails(InstructorDao dao) {
