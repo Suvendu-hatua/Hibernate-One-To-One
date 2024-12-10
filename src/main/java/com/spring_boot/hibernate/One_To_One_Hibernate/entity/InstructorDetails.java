@@ -16,6 +16,13 @@ public class InstructorDetails {
     @Column(name = "hobbies")
     private String hobbies;
 
+    //Adding Constructor.
+
+    public InstructorDetails(String youTubeChannel, String hobbies) {
+        this.youTubeChannel = youTubeChannel;
+        this.hobbies = hobbies;
+    }
+
 
     //Adding setter and Getter methods-->
 

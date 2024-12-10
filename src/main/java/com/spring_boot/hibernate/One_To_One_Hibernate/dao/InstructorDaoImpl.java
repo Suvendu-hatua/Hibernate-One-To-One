@@ -4,6 +4,7 @@ import com.spring_boot.hibernate.One_To_One_Hibernate.entity.Instructor;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class InstructorDaoImpl implements InstructorDao{
@@ -14,12 +15,13 @@ public class InstructorDaoImpl implements InstructorDao{
         this.entityManager=entityManager;
     }
     @Override
+    @Transactional
     public void addInstructorWithDetails(Instructor instructor) {
-
+        entityManager.persist(instructor);
     }
 
     @Override
     public Instructor findInstructorById(int id) {
-        return null;
+        return entityManager.find(Instructor.class,id);
     }
 }
